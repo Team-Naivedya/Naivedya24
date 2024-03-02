@@ -48,4 +48,21 @@ $(".step").click(function () {
       $('#carouselId').carousel('next');
     });
   });
-          
+  // ====================================================================
+  $(document).ready(function () {
+    // Grab the initial top offset of the navigation
+    var stickyNavTop = $(".header").offset().top;
+  
+    // Our function that decides whether the navigation bar should have "fixed" css position or not.
+    $(window).scroll(function () {
+      if ($(window).scrollTop() >= stickyNavTop) {
+        // If page is scrolled more than navbar offset, change its position to fixed to stick to top, restoring its original top offset
+        $(".header").addClass("affix");
+      } else {
+        // Else, change the position back to "static"
+        $(".header").removeClass("affix");
+      }
+    });
+  });
+  //===========================================================================================
+  

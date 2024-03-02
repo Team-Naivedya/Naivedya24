@@ -36,27 +36,23 @@ main {
   padding: 2rem;
 }
 h1 {
-  text-align: center;
   padding-top: 4rem;
-  max-width: 90%;
   align-items: center;
-  margin: auto;
-  margin-bottom: 0.2rem;
+  text-align: center;
+  transition: all 0.5s ease;
 }
 h1:hover {
   transform: scale(1.1);
-  transition: all ease-in-out 0.2s;
 }
 span {
   color: var(--text-color);
 }
 
 .club-logo img {
-  width: 24em;
+  width: 12em;
   aspect-ratio: 1/1;
   object-fit: contain;
   border-radius: 50%;
-  border: 2px solid red;
 }
 .name > a {
   font-size: 3rem;
@@ -120,8 +116,8 @@ nav {
   align-items: center;
   justify-content: center;
   height: 100%;
-  margin: 0 1.5rem;
-  color: rgba(0, 0, 0, 0.75);
+  margin-left: 1.5rem;
+  color: rgba(209, 231, 40, 0.75);
   transition: all 0.1s ease-in-out;
 }
 /* .navbar a:hover,
@@ -398,4 +394,9 @@ nav {
   .contact span {
     font-size: small;
   }
+}
+.carousel-item img {
+  width: 100%;
+  object-fit: contain;
+  aspect-ratio: 4/3;
 }

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <style>
+      .owl-caraousel-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .owl-carousel .item {
+        height: 70vh;
+        background: #3fbfb9;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin: 0 10px; /* add some margin to the left/right of each item */
+      }
+
+      .owl-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
+      }
+
+      .owl-prev,
+      .owl-next {
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        border-radius: 50%;
+        color: white;
+        margin: 0 5px;
+      }
+
+      .owl-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .owl-dot {
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 5px;
+        margin: 0 5px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .owl-dot span {
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 50%;
+        margin-top: 5px;
+      }
+
+      .owl-dot.active span,
+      .owl-dot:hover span {
+        width: 15px;
+        height: 15px;
+      }
+
+      img {
+        width: 100%;
+        object-fit: contain;
+        aspect-ratio: 1/1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="owl-caraousel-container">
+      <div class="owl-carousel owl-theme">
+        <div class="item">
+          <figure>
+            <img src="images/2.png" alt="" />
+          </figure>
+        </div>
+        <div class="item">
+          <figure>
+            <img src="images/3.png" alt="" />
+          </figure>
+        </div>
+        <div class="item">
+          <figure>
+            <img src="images/4.png" alt="" />
+          </figure>
+        </div>
+        <div class="item">
+          <figure>
+            <img src="images/5.png" alt="" />
+          </figure>
+        </div>
+        <div class="item">
+          <figure>
+            <img src="images/6.png" alt="" />
+          </figure>
+        </div>
+        <!-- Additional items here -->
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+          items: 1,
+          loop: true,
+          autoplay: true,
+          autoplayTimeout: 2000,
+          autoplayHoverPause: true,
+          nav: true,
+          dots: true,
+          navText: ["< Prev", "Next >"],
+        });
+      });
+    </script>
+  </body>
+</html>
