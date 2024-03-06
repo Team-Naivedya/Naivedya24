@@ -21,42 +21,44 @@ main {
   color: rgb(0, 0, 0);
 }
 .landing-page {
-  background-image: linear-gradient(
-      90deg,
-      rgba(32, 39, 67, 1),
-      rgba(88, 128, 129, 0.3)
-    ),
-    url(images/college_!.jpg);
+  background: rgba(52, 145, 97, 0.873);
   background-position: top;
   background-size: cover;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   padding: 2rem;
 }
 h1 {
   text-align: center;
-  padding-top: 4rem;
+  padding-top: 1rem; /* Reduce padding top to reduce the gap */
   max-width: 90%;
   align-items: center;
   margin: auto;
   margin-bottom: 0.2rem;
+  color: var(--text-color);
 }
 h1:hover {
   transform: scale(1.1);
   transition: all ease-in-out 0.2s;
 }
-span {
-  color: var(--text-color);
-}
 
+span {
+  color: var(--main-color);
+}
+.club-logo {
+  margin: 0;
+  padding: 0;
+}
 .club-logo img {
-  width: 24em;
+  width: 15em;
   aspect-ratio: 1/1;
   object-fit: contain;
-  border-radius: 50%;
-  border: 2px solid red;
+  margin-bottom: 1.2em;
+  margin: 0;
+  padding: 0;
 }
 .name > a {
   font-size: 3rem;
@@ -67,8 +69,97 @@ span {
 }
 .name > p {
   margin-top: 1.2em; /* Add margin top for the gap */
-  color: #6acc14;
+  color: var(--text-color);
+  text-align: center;
+  background-color: rgba(180, 207, 193, 0.539);
+  padding: 3%;
+  border-radius: 20px;
+  width: 30rem;
 }
+.container-social {
+  position: absolute;
+  top: 20px; /* Adjust the top position as needed */
+  right: 20px; /* Adjust the right position as needed */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other elements on the page */
+}
+.card {
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 25px 25px;
+  gap: 20px;
+  border: none;
+}
+
+/* for all social containers*/
+.socialContainer {
+  width: 52px;
+  height: 52px;
+  background-color: rgb(44, 44, 44);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  border-radius: 20%;
+}
+/* instagram*/
+.containerOne:hover {
+  background-color: #d62976;
+  transition-duration: 0.3s;
+}
+/* twitter*/
+.containerTwo:hover {
+  background-color: #00acee;
+  transition-duration: 0.3s;
+}
+/* linkdin*/
+.containerThree:hover {
+  background-color: #0072b1;
+  transition-duration: 0.3s;
+}
+/* Whatsapp*/
+.containerFour:hover {
+  background-color: #128c7e;
+  transition-duration: 0.3s;
+}
+
+.socialContainer:active {
+  transform: scale(0.9);
+  transition-duration: 0.3s;
+}
+
+.socialSvg {
+  width: 17px;
+}
+
+.socialSvg path {
+  fill: rgb(255, 255, 255);
+}
+
+.socialContainer:hover .socialSvg {
+  animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .header {
   background: transparent;
   position: relative;
@@ -78,7 +169,7 @@ span {
   padding: 2rem 4%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   z-index: 100;
 }
 .header .navbar a {
@@ -86,7 +177,8 @@ span {
   transition: color 0.3s ease;
 }
 .navbar {
-  background-color: #0524435e;
+  background-color: rgba(0, 145, 70, 0.319);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 .header .navbar a:hover {
   text-decoration: none;
@@ -121,14 +213,9 @@ nav {
   justify-content: center;
   height: 100%;
   margin: 0 1.5rem;
-  color: rgba(0, 0, 0, 0.75);
+  color: black;
   transition: all 0.1s ease-in-out;
 }
-/* .navbar a:hover,
-  .navbar a.active {
-    border-bottom: 3px solid var(--bg-color);
-  } */
-
 .about-container,
 .implement-container {
   height: 100vh;
@@ -136,7 +223,7 @@ nav {
   grid-template-columns: 1fr 1fr; /* Two equal-width columns */
   gap: 20px;
   justify-content: space-evenly; /* Center the columns horizontally */
-  padding: 2rem 2% 0 2rem;
+  padding: 0 2% 0 2rem;
   color: var(--text-color);
   place-items: center;
   box-sizing: border-box;
@@ -144,17 +231,17 @@ nav {
 
 .about-club,
 .about-implement {
-  text-align: center;
+  text-align: left;
 }
 .club-image img {
   width: 100%;
-  aspect-ratio: 1/1;
   object-fit: contain;
+  border: 2px solid black;
 }
 .implement-image img {
   width: 100%;
-  aspect-ratio: 4/3;
   object-fit: contain;
+  border: 2px solid black;
 }
 @media (max-width: 1008px) {
   .about-container {
@@ -343,8 +430,7 @@ nav {
   flex-direction: row;
   justify-content: center;
   margin: auto;
-  background-color: gray;
-  color: #faf9f6;
+  color: #000000;
   font-size: small;
 }
 
@@ -355,47 +441,104 @@ nav {
   margin: 40px;
 }
 
-.college,
-.contact {
-  position: relative;
-  padding: 2rem;
-  text-align: center;
-  align-items: center;
-}
-
-.contact {
-  display: flex;
-  flex-direction: column;
-  text-transform: none;
-}
-
-.horizontal {
-  width: 100%;
-  height: 0.5px;
-  background-color: black;
-  margin: 10px;
-}
-
 .college h1,
 .college h2,
 .contact h2,
 .contact h3,
 .contact span {
-  font-size: medium;
-}
-
-.contact a {
-  text-transform: lowercase;
   font-size: small;
-  color: rgb(8, 103, 187);
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
-@media screen and (min-width: 768px) {
-  .college h1,
-  .college h2,
-  .contact h2,
-  .contact h3,
-  .contact span {
-    font-size: small;
-  }
+.footer {
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+a {
+  display: block;
+  color: #333;
+  text-decoration: none !important;
+  transition: color 0.3s;
+}
+
+.container-sponsor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+}
+
+.card-sponsor {
+  margin: 2%;
+  background: #dbbdbd;
+  box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  height: 300px;
+  transition: 0.2s all;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+  font-size: 13px;
+  padding-top: 30px;
+}
+.card-sponsor > ul {
+  text-align: left;
+  padding: 20px;
+}
+
+.card-sponsor > span {
+  display: block;
+  margin: auto;
+  max-width: 40px;
+}
+
+.container-sponsor:hover .card-sponsor {
+  opacity: 0.5;
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.container-sponsor:hover .card-sponsor:hover {
+  transform: scale(1);
+  filter: blur(0px);
+  opacity: 1;
+  box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
+  background: #a82c2c;
+  color: white;
 }
