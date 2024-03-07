@@ -65,15 +65,38 @@ $(".step").click(function () {
     });
   });
   //===========================================================================================
-  $(document).ready(function () {
-    $(".owl-carousel").owlCarousel({
-      items: 1,
-      loop: true,
-      autoplay: true,
-      autoplayTimeout: 2000,
-      autoplayHoverPause: true,
-      nav: true,
-      dots: true,
-      navText: ["< Prev", "Next >"],
-    });
-  });
+  const slidesContainer = document.getElementById("images");
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    const newTransformValue = -index * 100 + "%";
+    slidesContainer.style.transform =
+      "translateX(" + newTransformValue + ")";
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slidesContainer.children.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide =
+      (currentSlide - 1 + slidesContainer.children.length) %
+      slidesContainer.children.length;
+    showSlide(currentSlide);
+  }
+
+  // // Automatic slideshow
+  autoSlideInterval = setInterval(nextSlide, 2000);
+
+  // Optional: Pause on hover
+  slidesContainer.addEventListener("mouseenter", () =>
+    clearInterval(autoSlideInterval)
+  );
+ 
+  // Add click event listeners to controls
+  const nextButton = document.getElementById("controls-next");
+  const prevButton = document.getElementById("controls-prev");
+
+  nextButton.addEventListener("click", nextSlide);
+  prevButton.addEventListener("click", prevSlide);

@@ -542,3 +542,43 @@ a {
   background: #a82c2c;
   color: white;
 }
+/* --------------------------------------------------------------------- */
+.container-slideshow {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  margin: 5rem 0 3rem 0;
+}
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  background-color: #faf0e6;
+  cursor: pointer;
+  z-index: 2;
+}
+svg {
+  height: 6vh;
+  width: 10vw;
+}
+.images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  align-items: center; /* Center horizontally */
+  justify-content: flex-start; /* Center vertically */
+  height: 100%; /* Center vertically */
+  width: 200%; /* Adjusted width */
+}
+
+figure {
+  display: flex;
+  flex: 0 0 100%;
+  justify-content: center;
+  margin: 0 auto;
+}
+.container-slideshow img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}

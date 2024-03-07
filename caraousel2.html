@@ -8,6 +8,7 @@
       .container-slideshow {
         height: 100vh;
         display: flex;
+        overflow: hidden;
       }
       .controls {
         display: flex;
@@ -15,48 +16,37 @@
         background-color: blue;
         cursor: pointer;
         z-index: 2;
-        justify-content: right;
       }
       svg {
         height: 60vh;
         width: 10vw;
       }
-      /* .images {
-        display: flex;
-        flex-direction: row;
-      } */
       .images {
         display: flex;
-        flex-direction: column; /* Change to column */
-        align-items: center; /* Center the images horizontally */
-        justify-content: center; /* Center the images vertically */
-        height: 100vh; /* Set a height to ensure all images are visible */
-        overflow: hidden;
         transition: transform 0.5s ease-in-out;
+        align-items: center; /* Center horizontally */
+        justify-content: flex-start; /* Center vertically */
+        height: 100%; /* Center vertically */
+        width: 200%; /* Adjusted width */
       }
+
       figure {
         display: flex;
-        align-items: center;
+        flex: 0 0 100%;
         justify-content: center;
+        margin: 0 auto;
       }
+
       img {
         width: 90%;
         aspect-ratio: 1/1;
         object-fit: contain;
       }
-
-      .item {
-        margin: 10px; /* Add some margin between the images if needed */
-      }
-
-      .item figure {
-        margin: 0; /* Remove any default margin on the figure element */
-      }
     </style>
   </head>
   <body>
     <div class="container-slideshow">
-      <div class="controls"id="controls">
+      <div class="controls" id="controls-prev">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
           <path
             fill="#000000"
@@ -64,36 +54,14 @@
           />
         </svg>
       </div>
-      <div class="slides" id="slides">
-        <div class="images" id="images">
-          <div class="item">
-            <figure>
-              <img src="images/qualification.jpg" alt="" />
-            </figure>
-          </div>
-          <div class="item">
-            <figure>
-              <img src="images/qualification.jpg" alt="" />
-            </figure>
-          </div>
-          <div class="item">
-            <figure>
-              <img src="images/qualification.jpg" alt="" />
-            </figure>
-          </div>
-          <div class="item">
-            <figure>
-              <img src="images/qualification.jpg" alt="" />
-            </figure>
-          </div>
-          <div class="item">
-            <figure>
-              <img src="images/qualification.jpg" alt="" />
-            </figure>
-          </div>
-        </div>
+      <div class="images" id="images">
+        <figure><img src="images/qualification.jpg" alt="" /></figure>
+        <figure><img src="images/qualification.jpg" alt="" /></figure>
+        <figure><img src="images/team2.jpg" alt="" /></figure>
+        <figure><img src="images/team2.jpg" alt="" /></figure>
+        <figure><img src="images/team3.jpg" alt="" /></figure>
       </div>
-      <div class="controls"id="controls">
+      <div class="controls" id="controls-next">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
           <path
             fill="#000000"
@@ -103,89 +71,42 @@
       </div>
       <div class="dots"></div>
     </div>
+    <script>
+      const slidesContainer = document.getElementById("images");
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        const newTransformValue = -index * 100 + "%";
+        slidesContainer.style.transform =
+          "translateX(" + newTransformValue + ")";
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slidesContainer.children.length;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide =
+          (currentSlide - 1 + slidesContainer.children.length) %
+          slidesContainer.children.length;
+        showSlide(currentSlide);
+      }
+
+      // // Automatic slideshow
+      // autoSlideInterval = setInterval(nextSlide, 2000);
+
+      // Optional: Pause on hover
+      slidesContainer.addEventListener("mouseenter", () =>
+        clearInterval(autoSlideInterval)
+      );
+     
+      // Add click event listeners to controls
+      const nextButton = document.getElementById("controls-next");
+      const prevButton = document.getElementById("controls-prev");
+
+      nextButton.addEventListener("click", nextSlide);
+      prevButton.addEventListener("click", prevSlide);
+    </script>
   </body>
-  <script>
-    //   document.addEventListener("DOMContentLoaded", function () {
-    // const slidesContainer = document.getElementById('.images');
-    // let currentSlide = 0;
-
-    // function showSlide(index) {
-    //   const newTransformValue = -index * 100 + '%';
-    //   slides.style.transform = 'translateX(' + newTransformValue + ')';
-    // }
-
-    // function nextSlide() {
-    //   currentSlide = (currentSlide + 1) % slides.children.length;
-    //   showSlide(currentSlide);
-    // }
-
-    // function prevSlide() {
-    //   currentSlide = (currentSlide - 1 + slides.children.length) % slides.children.length;
-    //   showSlide(currentSlide);
-    // }
-
-    // // Automatic slideshow
-    // autoSlideInterval = setInterval(nextSlide, 5000);
-
-    // // Optional: Pause on hover
-    // slidesContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-    // slidesContainer.addEventListener('mouseleave', () => autoSlideInterval = setInterval(nextSlide, 5000));
-    $(document).ready(function() {
-  // Initialize current slide index
-  var currentSlide = 0;
-
-  // Function to show the current slide
-  function showCurrentSlide() {
-    // Hide all slides
-    $('.slides .item').hide();
-    // Show the current slide
-    $('.slides .item.current').show();
-  }
-
-  // Function to update the controls
-  function updateControls() {
-    // Disable previous button if on first slide
-    if (currentSlide === 0) {
-      $('#controls .controls svg:first-child').attr('disabled', 'disabled');
-    } else {
-      $('#controls .controls svg:first-child').removeAttr('disabled');
-    }
-
-    // Disable next button if on last slide
-    if (currentSlide === $('.slides .item').length - 1) {
-      $('#controls .controls svg:last-child').attr('disabled', 'disabled');
-    } else {
-      $('#controls .controls svg:last-child').removeAttr('disabled');
-    }
-  }
-
-  // Function to handle slide changes
-  function changeSlide(newSlideIndex) {
-    // Update the current slide index
-    currentSlide = newSlideIndex;
-    // Show the new slide
-    $('.slides .item').eq(currentSlide).addClass('current');
-    $('.slides .item').eq(currentSlide).siblings().removeClass('current');
-    showCurrentSlide();
-    updateControls();
-  }
-
-  // Initialize the first slide
-  showCurrentSlide();
-  updateControls();
-
-  // Handle click events on the controls
-  $('#controls .controls svg').click(function() {
-    var newSlideIndex;
-    if ($(this).is(':first-child')) {
-      // Go to previous slide
-      newSlideIndex = currentSlide - 1;
-    } else {
-      // Go to next slide
-      newSlideIndex = currentSlide + 1;
-    }
-    changeSlide(newSlideIndex);
-  });
-});
-  </script>
 </html>
