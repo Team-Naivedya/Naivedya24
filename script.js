@@ -1,32 +1,45 @@
-$(".step").click(function () {
-    $(this).addClass("active").prevAll().addClass("active");
-    $(this).nextAll().removeClass("active");
-  });
-  
-  $(".step01").click(function () {
-    $("#line-progress").css("width", "0%");
-    $(".dig").addClass("active").siblings().removeClass("active");
-  });
-  
-  $(".step02").click(function () {
-    $("#line-progress").css("width", "25%");
-    $(".grab").addClass("active").siblings().removeClass("active");
-  });
-  
-  $(".step03").click(function () {
-    $("#line-progress").css("width", "50%");
-    $(".convey").addClass("active").siblings().removeClass("active");
-  });
-  
-  $(".step04").click(function () {
-    $("#line-progress").css("width", "75%");
-    $(".cover").addClass("active").siblings().removeClass("active");
-  });
-  
-  $(".step05").click(function () {
-    $("#line-progress").css("width", "100%");
-    $(".frame").addClass("active").siblings().removeClass("active");
-  });
+$(".step").click(function() {
+  // Remove active class from all steps
+  $(".step").removeClass("active");
+
+  // Add active class to the clicked step
+  $(this).addClass("active");
+
+  // Reset list-style classes for all steps
+  $(".step").removeClass("list-style1 list-style2");
+
+  // Add list-style1 to the clicked step
+  $(this).addClass("list-style1");
+
+  // Add list-style2 to previous steps
+  $(this).prevAll(".step").addClass("list-style2");
+});
+
+$(".step01").click(function() {
+  $("#line-progress").css("width", "0%");
+  $(".dig").addClass("active").siblings().removeClass("active");
+});
+
+$(".step02").click(function() {
+  $("#line-progress").css("width", "25%");
+  $(".grab").addClass("active").siblings().removeClass("active");
+});
+
+$(".step03").click(function() {
+  $("#line-progress").css("width", "50%");
+  $(".convey").addClass("active").siblings().removeClass("active");
+});
+
+$(".step04").click(function() {
+  $("#line-progress").css("width", "75%");
+  $(".cover").addClass("active").siblings().removeClass("active");
+});
+
+$(".step05").click(function() {
+  $("#line-progress").css("width", "100%");
+  $(".frame").addClass("active").siblings().removeClass("active");
+});
+
   // ======================================================================================
   $(document).ready(function() {
     $('#carouselId').carousel({
