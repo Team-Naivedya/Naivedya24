@@ -113,3 +113,12 @@ $(".step05").click(function() {
 
   nextButton.addEventListener("click", nextSlide);
   prevButton.addEventListener("click", prevSlide);
+  //==============================================================================
+  function showSidebar(){
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'flex'
+  }
+  function hideSidebar(){
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'none'
+  }
